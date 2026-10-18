@@ -124,21 +124,11 @@ const localBusinessSchema = {
         }
         .menu-icon:hover { background: rgba(255,255,255,0.1); }
         
-        /* ================= LOGO STYLE FOR CUSTOM IMAGE ================= */
         .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-        
-        /* Yahan apni logo image ke liye style hai */
-        .logo-img {
-            width: 32px; /* Logo ki width adjust karein */
-            height: 32px; /* Logo ki height adjust karein */
-            object-fit: contain; /* Logo stretch nahi hoga */
-            border-radius: 4px;
-        }
-
+        .logo-img { width: 32px; height: 32px; object-fit: contain; border-radius: 4px; }
         .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
         .logo-main { font-weight: 800; font-size: 1.1rem; color: #ffffff; letter-spacing: 0.02em; }
         .logo-sub { font-size: 0.65rem; color: #94a3b8; font-weight: 500; letter-spacing: 0.5px; margin-top: 2px; }
-        /* ================================================================ */
 
         .header-icons { display: flex; gap: 14px; color: #fff; font-size: 1.1rem; align-items: center; }
         .header-icons span { 
@@ -434,10 +424,7 @@ const localBusinessSchema = {
             <div class="header-left">
                 <div class="menu-icon" id="menuBtn">☰</div>
                 <a href="/" class="logo">
-                    <!-- YAHAN APNI LOGO IMAGE KA PATH DAALEIN -->
-                    <!-- Example: src="/logo.png" ya src="/images/logo.jpg" -->
                     <img src="/logo.png" alt="RO Service Support Logo" class="logo-img" />
-                    
                     <div class="logo-text-wrap">
                         <span class="logo-main">RO Service Support</span>
                         <span class="logo-sub">Customer Service Center</span>
@@ -817,7 +804,7 @@ const localBusinessSchema = {
                 return localStorage.getItem('wm_blocked_' + fp) === 'true';
             };
 
-            // Form Submit Block
+            // Form Submit Block & Conversion Tracking
             const form = document.getElementById('serviceFormElement');
             if (form) {
                 form.addEventListener('submit', function(e) {
@@ -826,13 +813,14 @@ const localBusinessSchema = {
                         alert('Access Restricted');
                         return false;
                     }
+                    // ⭐ YAHAN AAPKA NAYA LABEL DAALA HAI
                     if (typeof gtag === 'function') {
-                        gtag('event', 'conversion', { 'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9' });
+                        gtag('event', 'conversion', { 'send_to': 'AW-16577170929/Hmk3CIuE4KAdEPGbzuA9' });
                     }
                 });
             }
 
-            // Call Button Block
+            // Call Button Block & Tracking
             document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     if (isBlocked()) {
