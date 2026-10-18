@@ -9,6 +9,16 @@ const PHONE_LINK = "tel:+919876543210";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thank You | RO Service Support</title>
+
+    <!-- ⭐ GOOGLE TAG BASE CODE (Yahan aapki purani ID hai) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16577170929"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-16577170929');
+    </script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -144,6 +154,16 @@ const PHONE_LINK = "tel:+919876543210";
     </style>
 </head>
 <body>
+
+    <!-- ⭐ FORM CONVERSION TRACKING (Jab thank you page load hoga tab fire hoga) ⭐ -->
+    <script is:inline>
+        if (typeof gtag === 'function') {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9' // <-- Aapka Form Label
+            });
+        }
+    </script>
+
     <div class="card">
         <div class="icon">✓</div>
         <h1>Request Submitted!</h1>
@@ -164,7 +184,12 @@ const PHONE_LINK = "tel:+919876543210";
 
         <p>For urgent assistance, please call us directly.</p>
         
-        <a href={PHONE_LINK} class="btn">📞 Call Now</a>
+        <!-- ⭐ CALL CONVERSION TRACKING (Agar thank you page par call dabaye) ⭐ -->
+        <a href={PHONE_LINK} 
+           onclick="if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-16577170929/4Py1CIfWm5wdEPGbzuA9'}); }" 
+           class="btn">
+           📞 Call Now
+        </a>
         <a href="/" class="btn-outline">← Home</a>
     </div>
 
